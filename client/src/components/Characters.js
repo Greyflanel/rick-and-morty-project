@@ -1,34 +1,27 @@
 import React, { NavLink, Route } from 'react';
 import styled from 'styled-components';
-
+import Character from './Character'
 
 const Characters = (props) => {
-  console.log(props)
+console.log(props)
+
+  
  return (
- <CardContainer>
-{props.charData.map(char => 
-  <NavLink to="/character/:id" >
-<CharCard key={char.id}>
-<h1>{char.name}</h1>
- <span>Species: {char.species}</span>
- <span>Current Location: {char.location.name} <br/></span>
- <span>Origin:  {char.origin.name}</span>
- <h5>{char.status}</h5> <br/>
-  <Image src={char.image} alt="rick and morty character"/>
+   <CardContainer>
+     {props.charData.map(char => <CharCard key={char.id}>
+      
+ 
+      
   </CharCard>
-  </NavLink>
-)}; 
-<Route />
-</CardContainer>
-)
- } 
-
-
+  )}
+  </CardContainer>
+  )
+} 
 
 const CardContainer = styled.div`
-display: flex;
+ display: flex;
 flex-wrap: wrap;
-`
+ `
 
 const Image = styled.img`
 border-radius: 10px;
@@ -51,5 +44,8 @@ img:hover {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
-`
+` 
+      
+        
 export default Characters;
+
