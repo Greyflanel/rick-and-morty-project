@@ -1,43 +1,48 @@
-import React from "react";
-import styled from "styled-components";
-import Character from "./Character"
-import { Route, NavLink } from "react-router-dom";
+import React from 'react';
+import {  NavLink } from 'react-router-dom';
+import styled from 'styled-components'
+
+const Characters = (props) => { 
+
+return <CardContainer>
+Rick and Morty Characters
+{props.chars.map(char => <NavLink to={`/character/${char.id}`}
+key={char.id} >
+<CharCard>
+<h2>{char.name}</h2>
+<h3>{char.status}</h3>
+<img src={char.image} alt=""/>
+</CharCard>
+</NavLink>
+)}
 
 
-const Characters = props => {
-  return props.chars.map(c => {
-    return (
-      <CharCard key={c.id}>
-        <Character />
-        <Image src={c.image} alt="rick and morty characters" />
-      </CharCard>
-    );
-  });
-};
+</CardContainer>
+}
 
-const Image = styled.img`
-  border-radius: 10px;
-  width: 100%;
-  height: auto;
-`;
+ const CardContainer = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+
+   
+ `;
+
 
 const CharCard = styled.div`
-  text-align: center;
-  word-wrap: break-word;
-  width: 300px;
-  height: 500px;
-  margin: 2%;
-  color: lime;
-  border: 2px solid lime;
-  border-radius: 10px;
-  text-shadow: 4px 3px black;
-  img:hover {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-  }
-`;
-const H1 = styled.h1`
-  color: lime;
-`;
+   text-align: center;
+   word-wrap: break-word;
+   width: 350px;
+   height: 500px;
+   margin: 2%;
+   color: lime;
+   border: 2px solid lime;
+   border-radius: 10px;
+   text-shadow: 4px 3px black;
+   
+   img:hover {
+     -webkit-transform: scaleX(-1);
+     transform: scaleX(-1);
+   }
+ `;
 
 export default Characters;

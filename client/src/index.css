@@ -2,9 +2,10 @@
      border: 1px solid #f00 !important;
    }  */
 body {
+  background-image: url("https://images6.alphacoders.com/101/thumb-1920-1014033.jpg");
   width: 1600px;
   margin: 0 auto;
-  background-image: url("https://images6.alphacoders.com/101/thumb-1920-1014033.jpg");
+  /* */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -19,7 +20,7 @@ code {
 
 a {
   
-  
+  color: magenta;
 }
 h1, h3, h4, h5 {
   margin: 2%;
@@ -29,4 +30,8 @@ h1, h3, h4, h5 {
 img {
   width: 45%;
   
+}
+
+h1 {
+  color: lime;
 }

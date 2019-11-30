@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Route, NavLink } from "react-router-dom";
-import styled from 'styled-components'
+import Characters from "./components/Characters";
+import Character from "./components/Character";
 import axios from "axios";
-import Characters from "./components/Characters"
+// import styled from "styled-components";
 
 const App = () => {
-const [charData, setCharData] = useState([]);
-    
-    useEffect(() => {
-        const getCharacters = () => {
-            axios
-            .get("https://rickandmortyapi.com/api/character")
-            .then(response => {
-                setCharData(response.data.results)
-                
-            })
-            .catch(error => console.log(error));
-        };
-        getCharacters();
-    }, [])
-console.log(charData)
-    return (
-        <CardContainer>
-        <NavLink to="/">Home</NavLink>
-        <Route exact path="/" />
-        <Characters chars={charData}/> 
-        </CardContainer>
-    )
+  const [charData, setCharData] = useState([]);
+
+  useEffect(() => {
+    const getCharacters = () => {
+      axios
+        .get("https://rickandmortyapi.com/api/character")
+        .then(response => {
+          setCharData(response.data.results);
+        })
+        .catch(error => error.response);
+    };
+    getCharacters();
+  }, []);
+  
+  return (
+    <div>
+      <h1>Rick and Morty</h1>
+
+      <NavLink exact to="/">
+        Home
+      </NavLink>
+      <Route exact path="/" render={props => <Characters  chars={charData} />} />
+      <Route path="/character/:id" render={props => <Character {...props} />} />
+    </div>
+  );
 };
-
-const CardContainer = styled.div`
- display: flex;
-flex-wrap: wrap;
-
- `
 
 export default App;
